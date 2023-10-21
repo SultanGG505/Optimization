@@ -1,42 +1,63 @@
-import numpy as np
-import matplotlib.pyplot as plt
+import tkinter as tk
+from tkinter import ttk
 
-# Задаем функцию, которую мы хотим оптимизировать
-def target_function(x):
-    return x**2
+from matplotlib import pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-# Задаем производную функции (градиент)
-def gradient(x):
-    return 2 * x
+from LR.LR1 import drawLab1
 
-# Начальное значение x
-x = 6
+window = tk.Tk()
+window.title("Методы поисковой оптимизации")
+window.state('zoomed')
 
-# Задаем параметры градиентного спуска
-learning_rate = 0.1
-num_iterations = 10
+# Создаем фрейм для Matplotlib (левая панель)
+matplotlib_frame = ttk.Frame(window)
+matplotlib_frame.grid(row=0, column=0, sticky="nsew")
 
-<<<<<<< Updated upstream
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('sd')
-=======
-# Создаем списки для хранения значений x и y (значения функции) на каждой итерации
-x_history = [x]
-y_history = [target_function(x)]
->>>>>>> Stashed changes
+# Устанавливаем максимальные размеры для matplotlib_frame
+window.grid_rowconfigure(0, weight=1)
+window.grid_columnconfigure(0, weight=1)
 
-# Итерируемся по методу градиентного спуска и сохраняем значения x и y на каждой итерации
-for _ in range(num_iterations):
-    x -= learning_rate * gradient(x)
-    x_history.append(x)
-    y_history.append(target_function(x))
+# Создаем трехмерное поле Matplotlib
+fig = plt.figure(figsize=(6, 8), dpi=100)
+ax = fig.add_subplot(projection='3d')
 
-# Создаем график для визуализации
-plt.figure(figsize=(10, 5))
-plt.plot(x_history, y_history, marker='o', linestyle='-')
-plt.title('Градиентный спуск с постоянным шагом')
-plt.xlabel('x')
-plt.ylabel('Значение функции')
-plt.grid(True)
-plt.show()
+# Устанавливаем размеры Pyplot
+canvas = FigureCanvasTkAgg(fig, master=matplotlib_frame)
+canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+
+# Создаем фрейм с вкладками (правая панель)
+notebook = ttk.Notebook(window)
+notebook.grid(row=0, column=1, sticky="nsew")
+
+# Устанавливаем ширину для правой панели
+window.grid_columnconfigure(1, minsize=350)
+
+# Вкладка для лр1
+tab1 = ttk.Frame(notebook)
+notebook.add(tab1, text="ЛР1")
+drawLab1(tab1, window, ax, canvas)
+
+tab2 = ttk.Frame(notebook)
+notebook.add(tab2, text="ЛР2")
+
+tab3 = ttk.Frame(notebook)
+notebook.add(tab3, text="ЛР3")
+
+tab4 = ttk.Frame(notebook)
+notebook.add(tab4, text="ЛР4")
+
+tab5 = ttk.Frame(notebook)
+notebook.add(tab5, text="ЛР5")
+
+tab6 = ttk.Frame(notebook)
+notebook.add(tab6, text="ЛР6")
+
+tab7 = ttk.Frame(notebook)
+notebook.add(tab7, text="ЛР7")
+
+tab8 = ttk.Frame(notebook)
+notebook.add(tab8, text="ЛР8")
+
+
+window.mainloop()

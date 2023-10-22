@@ -6,6 +6,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 from LR.LR1 import drawLab1
 from LR.LR2 import drawLab2
+from LR.LR3 import drawLab3
 
 window = tk.Tk()
 window.title("Методы поисковой оптимизации")
@@ -45,6 +46,7 @@ drawLab2(tab2, window, ax, canvas)
 
 tab3 = ttk.Frame(notebook)
 notebook.add(tab3, text="ЛР3")
+drawLab3(tab3, window, ax, canvas)
 
 tab4 = ttk.Frame(notebook)
 notebook.add(tab4, text="ЛР4")

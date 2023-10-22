@@ -46,10 +46,6 @@ def drawLab2(tab, window, ax, canvas):
         res_y = y_var.get()
         delay = delay_var.get()
 
-        x_cs = []
-        y_cs = []
-        z_cs = []
-
         ax.cla()
         x_range = np.linspace(x_interval_min.get(), x_interval_max.get(), 100)
         y_range = np.linspace(y_interval_min.get(), y_interval_max.get(), 100)
@@ -75,11 +71,6 @@ def drawLab2(tab, window, ax, canvas):
         results_text.delete(1.0, tk.END)
 
         for i, point in simplex_method(res_x, res_y):
-            x_cs.append(point[0])
-            y_cs.append(point[1])
-            z_cs.append(point[2])
-            print(point)
-
             # Сохранение результатов и обновление графика
             results.append((point[0], point[1], i, point[2]))
             ax.scatter(point[0], point[1], point[2], color='red', s=10)
@@ -127,8 +118,7 @@ def drawLab2(tab, window, ax, canvas):
     func_values_frame.grid(row=3, column=0, padx=10, pady=3, sticky="w")
 
     ttk.Label(func_values_frame, text="Выберите функцию").grid(row=3, column=0)
-    function_choices = ["...", "Функция Химмельблау", "2x^2+3y^2+4xy-6x-3y", "Функция Розенброка",
-                        "Функция Растригина", "Функция сферы"]
+    function_choices = ["2x^2+3y^2+4xy-6x-3y"]
     function_var = tk.StringVar(value=function_choices[0])
     function_menu = ttk.Combobox(func_values_frame, textvariable=function_var, values=function_choices,
                                  width=22, state="readonly")

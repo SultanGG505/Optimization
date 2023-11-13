@@ -1,12 +1,12 @@
 import tkinter as tk
 from tkinter import ttk
-
 from matplotlib import pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 from LR.LR1 import drawLab1
 from LR.LR2 import drawLab2
 from LR.LR3 import drawLab3
+from LR.LR4 import drawLab4
 
 window = tk.Tk()
 window.title("Методы поисковой оптимизации")
@@ -50,6 +50,7 @@ drawLab3(tab3, window, ax, canvas)
 
 tab4 = ttk.Frame(notebook)
 notebook.add(tab4, text="ЛР4")
+drawLab4(tab4, window, ax, canvas)
 
 tab5 = ttk.Frame(notebook)
 notebook.add(tab5, text="ЛР5")

@@ -89,7 +89,7 @@ def drawLab4(tab, window, ax, canvas):
         # Создадим colormap с тремя цветами
         colors = [(0, 0, 0), (1, 0.843, 0), (1, 0.698, 0)]  # Черный, золотой, близкий к золотому
         cmap = LinearSegmentedColormap.from_list("DX:HR", colors, N=256)
-        alpha = 0.7
+        alpha = 0.3
         ax.plot_surface(X, Y, Z, cmap=cmap, alpha=alpha)
 
         pso = PSO(target_func, particle_number, 5, 5, fi_p, fi_g)

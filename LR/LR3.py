@@ -11,18 +11,20 @@ from functions import target_function
 
 
 class GeneticAlgorithm:
-    def __init__(self, func, generations=50, mut_chance=0.8, survive_cof=0.8, pop_number=100):
+    def __init__(self, func, generations, pop_number, x_range, y_range, mut_chance=0.8, survive_cof=0.8):
         self.func = func
         self.population = dict()
         self.mut_chance = mut_chance
         self.survive_cof = survive_cof
         self.generations = generations
         self.pop_number = pop_number
+        self.x_range = x_range
+        self.y_range = y_range
 
-    def generate_start_population(self, x, y):
+    def generate_start_population(self):
         for i in range(self.pop_number):
-            po_x = uniform(-x, x)
-            po_y = uniform(-y, y)
+            po_x = np.clip(uniform(self.x_range[0], self.x_range[1]), self.x_range[0], self.x_range[1])
+            po_y = np.clip(uniform(self.y_range[0], self.y_range[1]), self.y_range[0], self.y_range[1])
             self.population[i] = [po_x, po_y, self.func(po_x, po_y)]
 
     def get_best_individual(self):
@@ -90,7 +92,8 @@ def drawLab3(tab, window, ax, canvas):
         alpha = 0.7
         ax.plot_surface(X, Y, Z, cmap=cmap, alpha=alpha)
 
-        genetic = GeneticAlgorithm(target_func, iter_number, mutation, survive, pop_number)
+        genetic = GeneticAlgorithm(target_func, pop_number, iter_number, [x_interval_min.get(), x_interval_max.get()],
+                                   [y_interval_min.get(), y_interval_max.get()], mutation, survive)
         genetic.generate_start_population(abs(x_interval_max.get()), abs(x_interval_max.get()))
 
         # отрисовка стартовой популяции

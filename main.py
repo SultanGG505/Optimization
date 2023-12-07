@@ -10,6 +10,7 @@ from LR.LR4 import drawLab4
 from LR.LR5 import drawLab5
 from LR.LR6 import drawLab6
 from LR.LR7 import drawLab7
+from LR.LR8 import drawLab8
 
 window = tk.Tk()
 window.title("Методы поисковой оптимизации")
@@ -69,6 +70,6 @@ drawLab7(tab7, window, ax, canvas)
 
 tab8 = ttk.Frame(notebook)
 notebook.add(tab8, text="ЛР8")
-
+drawLab8(tab8, window, ax, canvas)
 
 window.mainloop()
